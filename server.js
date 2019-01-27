@@ -50,7 +50,7 @@ app.get('*', function(req, res) {
 });
 
 app.post('/api/registerUser', function (req, res) {
-  console.log("registerUser 3 = " + JSON.stringify(req));
+  console.log("registerUser 3 = " + JSON.stringify(req.headers));
 
   var sampleFile = req.files.file1;
 
@@ -78,7 +78,7 @@ app.post('/api/registerUser', function (req, res) {
           //         console.log(err);
           //     }
           // });
-          return res.send(data.toString());
+          return res.send(JSON.parse(data.toString()));
       });
       process.stderr.on('data', (data) => {
           console.log(data.toString());

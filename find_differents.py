@@ -51,7 +51,7 @@ for c in cnts:
 	# bounding box on both input images to represent where the two
 	# images differ
 	(x, y, w, h) = cv2.boundingRect(c)
-	if w > 25 and h > 35:
+	if w > 3 and h > 3:
 		if "{" in result:
 			 result = result + ","
 		result = result + '{"x":%d,' % (x)
