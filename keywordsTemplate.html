@@ -1,0 +1,13 @@
+<div class="row vertical-align" style="width : 880px" ng-repeat='keyword in keyWordsResponse'>
+  <p class="text-keywords-index">{{$index + 1}}</p>
+  <p class="text-keywords-first">{{keyword[0].word}}</p>
+  <p class="text-keywords">{{keyword[0].position}}</p>
+  <!-- <p class="text-keywords">{{keyword[1].position}} {{keyword[1].interval != undefined ? (keyword[1].interval > 0 ? "<span style="color:green">(" + keyword[1].interval  + ")</span>"  : "<span style="color:red">(" + keyword[1].interval + ")</span>" ) : "" }}</p> -->
+  <p class="text-keywords">{{keyword[1].position}} {{keyword[1].interval != undefined ? "(" + (keyword[1].interval > 0 ? "+" + keyword[1].interval : keyword[1].interval) + ")" : "" }}</p>
+  <p class="text-keywords">{{keyword[2].position}} {{keyword[2].interval != undefined ? "(" + (keyword[2].interval > 0 ? "+" + keyword[2].interval : keyword[2].interval) + ")" : "" }}</p>
+  <p class="text-keywords">{{keyword[3].position}} {{keyword[3].interval != undefined ? "(" + (keyword[3].interval > 0 ? "+" + keyword[3].interval : keyword[3].interval) + ")" : "" }}</p>
+  <p class="text-keywords">{{keyword[4].position}} {{keyword[4].interval != undefined ? "(" + (keyword[4].interval > 0 ? "+" + keyword[4].interval : keyword[4].interval) + ")" : "" }}</p>
+  <p class="text-keywords">{{keyword[5].position}} {{keyword[5].interval != undefined ? "(" + (keyword[5].interval > 0 ? "+" + keyword[5].interval : keyword[5].interval) + ")" : "" }}</p>
+  <p class="text-keywords">{{keyword[6].position}} {{keyword[6].interval != undefined ? "(" + (keyword[6].interval > 0 ? "+" + keyword[6].interval : keyword[6].interval) + ")" : "" }}</p>
+  <button ng-click="upgradeClick($index, keyword[0].word)" id="upgrade-btn" type="button" class="btn btn-primary btn-md">Улучшить</button>
+</div>

@@ -1,0 +1,29 @@
+<md-dialog aria-label="Mango (Fruit)" style="margin-top: 100px">
+  <form ng-cloak>
+
+
+    <md-dialog-content style="padding-left : 10px; padding-right : 10px;">
+      <div class="md-dialog-content">
+        <div class="row vertical-align">
+          <p class="text-keywords-index-ips">Исполнители:</p>
+        </div>
+        <div class="row vertical-align" ng-repeat='ip in orderIps track by $index'>
+          <p class="text-keywords-index-ips">{{ip.substring(7, ip.length)}}</p>
+          <!-- <p class="text-keywords-index">{{ip}}</p> -->
+
+        </div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <!-- <md-button ng-click="getStats()" style="visible : collapse">
+        Посмотреть статистику
+      </md-button> -->
+      <span flex></span>
+
+      <md-button ng-click="answer()">
+        Закрыть
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

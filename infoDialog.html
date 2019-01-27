@@ -1,0 +1,80 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+
+
+    <md-dialog-content style="padding-left : 10px; padding-right : 10px">
+      <div class="md-dialog-content">
+        <div class="row vertical-align">
+          <img src=http://{{currentOrder.icon}} id="circle-icon-img" align="center" style="margin-left : 10px; margin-bottom : 10px; margin-right : 10px;">
+          <p style="margin-top : 5px">{{currentOrder.name}}</p>
+            </div>
+            <div class="row" style="height : 2px; color : #f4f9fc; margin-bottom : 10px; width : 100%">
+
+                </div>
+
+                <!-- <div class="row" ng-style="trackUrlStyle" style="visibility : collapse; display : none">
+
+                    <div class="col-lg-6 col-md-7" id="border">вставьте track url
+                      <div class="row">
+                        <input ng-model="trackUrlET" id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                        </input>
+                      </div>
+
+
+                  </div>
+                  <button ng-click="addTrackUrl()" id="start-campaign-btn-menu" type="button" class="btn btn-primary btn-md">Добавить</button>
+
+
+                </div> -->
+
+        <div class="row" id="collapsed-row" ng-style="searchStyle">
+          <p>Поисковый запрос: {{currentOrder.search_request}}</p>
+            </div>
+            <!-- <div class="row">
+              <p>Тип системы: {{currentOrder.type_os}}</p>
+                </div> -->
+
+                <div class="row" id="collapsed-row" ng-style="searchStyle">
+                  <p>Позиция по запросу: {{search_position}}</p>
+                    </div>
+                    <!-- <div class="row" id="collapsed-row" ng-style="searchStyle">
+                      <p>Текущая позиция по запросу: {{currentOrder.current_position}}</p>
+                        </div> -->
+                <div class="row">
+                  <p>Установок: {{currentOrder.count_installed}} из {{currentOrder.max_count_installs}} (выполнено на {{percents}}%)</p>
+                    </div>
+
+
+                        <div class="row" id="collapsed-row" ng-style="paramsStyle">
+                          <p>Параметры: {{params}}</p>
+                            </div>
+                            <!-- <div class="row" id="collapsed-row">
+                              <p>С отзывом: {{currentOrder.with_review ? 'да' : 'нет'}}</p>
+                                </div> -->
+                                <div class="row vertical-align" id="collapsed-row" ng-style="limitsStyle">
+                                  <p>Максимум скачиваний: {{limits}}</p>
+                                    </div>
+                                    <div class="row">
+                                      <p>Бюджет: {{currentOrder.count_money_r}} руб.</p>
+                                        </div>
+                                    <!-- <div class="row" id="collapsed-row" ng-style="hoursStyle">
+                                      <p>Максимум скачиваний в час: {{currentOrder.limit_hour == 99999 ? 'не установлен' : currentOrder.limit_hour}}</p>
+                                        </div>
+                                        <div class="row" id="collapsed-row" ng-style="minutesStyle">
+                                          <p>Максимум скачиваний в минуту: {{currentOrder.limit_minute == 99999 ? 'не установлен' : currentOrder.limit_minute}}</p>
+                                            </div> -->
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button ng-click="getStats()">
+        Посмотреть статистику
+      </md-button>
+      <span flex></span>
+
+      <md-button ng-click="answer()">
+        Закрыть
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
