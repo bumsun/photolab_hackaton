@@ -1,0 +1,44 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+
+
+    <md-dialog-content style="padding-left : 10px; padding-right : 10px">
+<div class="md-dialog-content">
+
+      <div class="row">
+        Сколько денег хотите добавить к заказу?
+      </div>
+      <div class="row" id="package-money-add">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="border">Введите сумму
+          <div class="row">
+            <input ng-change='sumChanged()' ng-model="sumET" name="sum" id="package-input"value="1000" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></input>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="row">Цена одной установки: {{currentOrder.price_one_install}} Р
+
+      </div>
+      <div class="row">Количество установок: {{countInstalls}}
+
+      </div>
+      <div class="row">Точная сумма к оплате: {{realSum}} Р
+
+      </div>
+
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button ng-click="addMoney()">
+        Оплатить
+      </md-button>
+      <span flex></span>
+
+      <md-button ng-click="cancelAddMoney()">
+        Закрыть
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
