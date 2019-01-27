@@ -1,0 +1,132 @@
+<!-- <script src="scripts/auth_script.js"></script> -->
+<div ng-controller="registrationController" class="container auth-table">
+
+  <div class="row">
+
+    <div class="col-md-6 col-md-offset-3" style="text-align: -webkit-center; text-align: -moz-center;">
+      <div class="row">
+          <img src="icons/logo.png" align="center" style="text-align: center;text-align: -moz-center;
+    align-items: center" class="logo-auth">
+      </div>
+      <div class="panel panel-login" style="max-width: 550px;">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <a href="#" class="active" id="login-form-link">Вход</a>
+            </div>
+            <div class="col-xs-6">
+              <a href="#" id="register-form-link">Регистрация</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <form  id="login-form" role="form" style="display: block;">
+                <div class="form-group">
+                  <input ng-model="authEmailET" type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Email" value="">
+                </div>
+                <div class="form-group">
+                  <input ng-model="authPasswordET" type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Пароль">
+                </div>
+                <!-- <div class="form-group text-center">
+                <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                <label for="remember"> Запомнить меня</label>
+              </div> -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3">
+                    <button ng-click="auth($event)" type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Войти">Войти</button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="text-center">
+                      <a href="" ng-click="forgotPass()" tabindex="5" class="forgot-password">Забыли пароль?</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <form   id="register-form" role="form" style="display: none;">
+              <div class="form-group">
+                <input ng-model="userNameET" type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Имя" value="">
+              </div>
+              <div class="form-group">
+                <input ng-model="emailET" type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email адрес" value="">
+              </div>
+              <div style="visibility : collapse; display : none"  class="form-group">
+                <input phone-input ng-model="phoneVal" type='text' name="phone-number" id="confirm-password" tabindex="2" class="form-control" placeholder="Номер телефона">
+              </div>
+              <div class="form-group">
+                <input ng-model="passwordET" type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Пароль">
+              </div>
+
+              <div class="form-group">
+                <a ng-click="promoTVClicked()"  ng-style="promoTVStyle" href=""> <p style="text-align : center">У меня есть промокод</p> </a>
+                <input ng-model="promoET" ng-style="promoETStyle" style="visibility : collapse; display : none" type="text" id="password" tabindex="2" class="form-control" placeholder="Промокод">
+
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3">
+                    <button ng-click="registration($event)" tabindex="4" class="form-control btn btn-register" id="login-submit" value="Зарегистрироваться">Зарегистрироваться</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+
+//Функция для смены активного окна с формы Авторизацию на форму Регистрации и наоборот
+$(function() {
+  if(window.location.hash == "#login") {
+    setLoginScreen()
+  }else if(window.location.hash == "#registration" || window.location.search.indexOf("referal=") !== -1) {
+    setRegisrtationScreen();
+  }else{
+    setLoginScreen();
+  }
+  $('#login-form-link').click(function(e) {
+    console.log("login-form-link");
+    setLoginScreen();
+    e.preventDefault();
+  });
+  $('#register-form-link').click(function(e) {
+    console.log("register-form-link");
+    setRegisrtationScreen();
+    e.preventDefault();
+  });
+
+
+});
+
+function setLoginScreen(){
+  $("#login-form").delay(100).fadeIn(100);
+  $("#register-form").fadeOut(100);
+  $('#register-form-link').removeClass('active');
+  $('#login-form-link').addClass('active');
+}
+function setRegisrtationScreen(){
+  $("#register-form").delay(100).fadeIn(100);
+  $("#login-form").fadeOut(100);
+  $('#login-form-link').removeClass('active');
+  $('#register-form-link').addClass('active');
+}
+
+
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -1,0 +1,36 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+
+
+    <md-dialog-content style="padding-left : 10px; padding-right : 10px">
+<div class="md-dialog-content">
+
+      <div class="row">
+        Изменение пароля
+      </div>
+      <div class="row" id="package-money-add">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="border">Введите новый пароль
+          <div class="row">
+            <input type="password" ng-model="newPasswordET" id="package-input" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></input>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button ng-click="changePass()">
+        Сменить
+      </md-button>
+      <span flex></span>
+
+      <md-button ng-click="cancelChangePass()">
+        Закрыть
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
