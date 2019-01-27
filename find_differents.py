@@ -20,11 +20,15 @@ def url_to_image(url):
     return image
 
 imageA = url_to_image(sys.argv[1])
+height, width, channels = imageA.shape
 imageB = url_to_image(sys.argv[2])
+imageB = cv2.resize(imageB, (width, height)) 
  
 # convert the images to grayscale
 grayA = cv2.cvtColor(imageA, cv2.COLOR_BGR2GRAY)
 grayB = cv2.cvtColor(imageB, cv2.COLOR_BGR2GRAY)
+
+
 
 # compute the Structural Similarity Index (SSIM) between the two
 # images, ensuring that the difference image is returned
@@ -47,7 +51,7 @@ for c in cnts:
 	# bounding box on both input images to represent where the two
 	# images differ
 	(x, y, w, h) = cv2.boundingRect(c)
-	if w > 25 and h > 25:
+	if w > 25 and h > 35:
 		if "{" in result:
 			 result = result + ","
 		result = result + '{"x":%d,' % (x)

@@ -7,7 +7,7 @@ import sys
 
 import numpy as np
 import urllib
-
+import random
 def url_to_image(url):
     # download the image, convert it to a NumPy array, and then read
     # it into OpenCV format
@@ -23,6 +23,16 @@ def url_to_image(url):
 # _, img_encoded = cv2.imencode('.jpg', image)
 
 # height, width, channels = img_color.shape 
+# img_original = cv2.imread("DrQTepS2eKI.jpg")
+data = {
+    'no_resize': 1,
+    'another_input_name': 'another input value',
+}
+files = {
+    'file1': open(sys.argv[1], 'rb')
+}
+r = requests.post("http://upload-hack.photolab.me/upload.php",data=data, files=files);
+url_orig = r.text
 
 def set_filter(url,template):
     data = {
@@ -31,12 +41,19 @@ def set_filter(url,template):
     }
     r = requests.post("http://api-hack.photolab.me/photolab_process.php",data=data);
     return r.text
-url = set_filter(sys.argv[1],'2172')
 
-url = set_filter(url,'2561')
 
-url = set_filter(url,'2097')
+differents1 = ["2671","2584","2172"]
+differents2 = ["2589","2561"]
+differents3 = ["2252","2097"]
+
+url = set_filter(url_orig,differents1[random.randint(0, len(differents1)-1)])# волосы 
+url = set_filter(url,differents2[random.randint(0, len(differents2)-1)])# рты
+url = set_filter(url,differents3[random.randint(0, len(differents3)-1)])# глаза
 
 img_rgb = url_to_image(url)
 cv2.imwrite("cartoon.jpg", cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR))
-print(url);
+print('''{
+    'original_url': '%s',
+    'fake_url': '%s',
+}''' % (url_orig, url));

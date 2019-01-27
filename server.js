@@ -50,32 +50,41 @@ app.get('*', function(req, res) {
 });
 
 app.post('/api/registerUser', function (req, res) {
-  console.log("registerUser 3");
+  console.log("registerUser 3 = " + JSON.stringify(req));
 
-  console.log("findDifference 4");
-  var spawn = require("child_process").spawn;
-  var process = spawn('/usr/bin/python3', ["/root/photolab/create_fake.py",
-    req.body.original_url
-  ]);
-  process.stdout.on('data', function(data) {
-      console.log("findDifference 8");
-      console.log(data.toString());
+  var sampleFile = req.files.file1;
 
-      // var user = new UsersModel({
-      //      original: req.body.original_url,
-      //      fake: req.body.fake_url
-      // });
+  // Use the mv() method to place the file somewhere on your server
+  var fileName = req.files.file1.name;
 
-      // user.save(function (err) {
-      //     if (err) {
-      //         console.log(err);
-      //     }
-      // });
-      return res.send({ status: 'OK', response:"1", fake_url:data.toString()});
+  fileName = "/root/test." + fileName.split(".")[1];
+  console.log("registerUser 2");
+  sampleFile.mv(fileName, function(err) {
+      var spawn = require("child_process").spawn;
+      var process = spawn('/usr/bin/python3', ["/root/photolab/create_fake.py",
+        fileName
+      ]);
+      process.stdout.on('data', function(data) {
+          console.log("findDifference 8");
+          console.log(data.toString());
+
+          // var user = new UsersModel({
+          //      original: req.body.original_url,
+          //      fake: req.body.fake_url
+          // });
+
+          // user.save(function (err) {
+          //     if (err) {
+          //         console.log(err);
+          //     }
+          // });
+          return res.send(data.toString());
+      });
+      process.stderr.on('data', (data) => {
+          console.log(data.toString());
+      });
   });
-  process.stderr.on('data', (data) => {
-      console.log(data.toString());
-  });
+  
 });
 
 app.post('/api/getUser', function(req, res) {
