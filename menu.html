@@ -1,0 +1,51 @@
+<aside class="side-menu" ng-controller="menuController" >
+  <nav class="sidebarMenu">
+    <ul class="left-menu">
+      <li>
+        <img src="icons/logo.png" align="center" class="logo">
+      </li>
+
+      <li  class="active">
+        <div class="row" id="package-row-menu">
+          <button ng-click="createNewOrder()" id="start-campaign-btn-menu" type="button" class="btn btn-primary btn-md">Создать новый заказ</button>
+        </div>
+      </li>
+
+      <li class="menu-text">
+        <a href="https://upmob.ru/orders" class="menu-text">Мои заказы</a>
+      </li>
+      <li class="menu-text">
+        <a href="https://upmob.ru/referals" class="menu-text">Заработай с нами</a>
+      </li>
+      <li class="menu-text">
+        <a href="https://upmob.ru/seo" class="menu-text">ASO анализ</a>
+      </li>
+      <li class="menu-text">
+        <a href="https://upmob.ru/statistics" class="menu-text">Статистика</a>
+      </li>
+
+      <li class="menu-text" ng-style="historyStyle" style="visibility : collapse; display : none">
+        <a href="https://upmob.ru/history" class="menu-text">Потраченные деньги</a>
+      </li>
+
+      <li class="menu-text-bot-3" style="bottom : 70px">
+        <p class="menu-text">Баланс {{balance}} р.</p>
+      </li>
+      <li class="menu-text-bot-3">
+        <a href="http://upmob.ru/pay" class="menu-text">Пополнить счет</a>
+      </li>
+      <li class="menu-text-bot-2">
+        <a href="http://blog.upmob.ru" class="menu-text">Наш блог</a>
+      </li>
+      <li class="menu-text-bot">
+        <a href="https://upmob.ru/license" class="menu-text">Пользовательское соглашение</a>
+      </li>
+      <!-- <li class="menu-text">
+        <a href="#" class="menu-text">Ослабить конкурента</a>
+      </li> -->
+
+      </ul>
+
+
+    </nav>
+</aside>

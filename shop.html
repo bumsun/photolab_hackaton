@@ -1,0 +1,100 @@
+
+<!-- <script src="scripts/shop.js"></script> -->
+<script src="scripts/menuAnimation.js"></script>
+
+<my-navbar></my-navbar>
+<my-menu></my-menu>
+
+<!--Body content-->
+<div class="content" ng-controller="myShopController">
+  <div class="top-bar">
+    <a href="#menu" class="side-menu-link burger">
+      <span class='burger_inside' id='bgrOne'></span>
+      <span class='burger_inside' id='bgrTwo'></span>
+      <span class='burger_inside' id='bgrThree'></span>
+    </a>
+  </div>
+  <section class="content-inner" id="cabinet-center">
+    <div class="container-fluid" id="center-container">
+
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <p class="my-orders-text">Пополнение баланса</p>
+        </div>
+
+
+      </div>
+      <!-- <div class="row col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xs-offset-1"> -->
+
+
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <div class="shop-card">
+          <a href="#" ng-click="bankCard()">
+            <div class="icon-placeholder" style="padding-top : 30px">
+              <img class="center" src="icons/visa_master.png" align="center">
+            </div>
+            <p class="center-text">Банковская карта</p>
+
+          </a>
+        </div>
+
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <div class="shop-card">
+          <a href="#" ng-click="buyYandex()" >
+            <div class="icon-placeholder" style="padding-top : 20px">
+              <img class="center" src="icons/yandex_money.png" align="center">
+            </div>
+            <p class="center-text">Яндекс.Деньги</p>
+
+          </a>
+        </div>
+
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <div class="shop-card" ng-click="beznal()">
+          <a href="#">
+            <div class="icon-placeholder-bank" >
+              <img class="center" src="icons/bank.png" align="center">
+            </div>
+            <p style="padding-top : 10px" class="center-text">Безналичный расчет</p>
+
+          </a>
+        </div>
+
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <div class="shop-card">
+          <a href="#" ng-click="qiwi()">
+            <div class="icon-placeholder" style="padding-top : 20px" >
+              <img class="center" src="icons/qiwi.png" align="center">
+            </div>
+            <p class="center-text">Qiwi кошелек</p>
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <div class="shop-card">
+          <a href="#" ng-click="coupons()">
+            <div class="icon-placeholder" >
+              <img class="center" src="icons/coupons.png" align="center">
+            </div>
+            <p class="center-text">Купоны</p>
+
+          </a>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+</div>

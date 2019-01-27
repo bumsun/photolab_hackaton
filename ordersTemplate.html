@@ -1,0 +1,116 @@
+<div class="col-xs-10 col-xs-offset-1 col-md-offset-0 col-sm-offset-0 col-lg-offset-0 col-lg-3 col-md-4 col-sm-6" ng-repeat='order in orders'>
+  <div class="single-blog-item">
+    <div class="row">
+      <div class="left">
+        <a href="#" ng-click="infoClicked(order, $event)">
+          <img src="icons/info@2x.png" class="icon-size-20">
+          <img src="icons/info-hover@2x.png" class="icon-size-20 hovered">
+        </a>
+        <div class="row">
+          <!-- <div class="left-15">
+          <a href="">
+          <img src="icons/settings@2x.png" class="icon-size-20">
+          <img src="icons/settings_hover@2x.png" class="icon-size-20 hovered">
+        </a>
+      </div> -->
+    </div>
+  </div>
+  <div class="right">
+    <a href=""  ng-click="deleteOrder(order._id)">
+      <img src="icons/delete@2x.png" class="icon-size-20">
+      <img src="icons/delete-hover@2x.png" class="icon-size-20 hovered">
+    </a>
+  </div>
+  <a href="{{order.type_os == 'android' ? 'https://play.google.com/store/apps/details?id=' + order.bundle : 'https://itunes.apple.com/ru/app/id' + order.appstore_id}}" class="center" align="center">
+    <img src="https://{{order.icon}}" class="img-circle center" id="circle-icon-img" align="center">
+    <img src="https://{{order.icon}}" class="img-circle center hovered" id="circle-icon-img" align="center">
+  </a>
+</div>
+
+<div class="row">
+  <div class="center">
+    <div class="label-app">
+      <h5 class="content-app">{{order.name}}</h5>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="row vertical-align">
+  <p class="text-left">Запрос</p>
+
+  <p class="content-request">{{order.search_request == undefined ? "без запроса" : order.search_request}}</p>
+
+
+
+</div>
+
+<div class="row vertical-align">
+  <p class="text-left">Отзыв</p>
+  <p class="text-bold">{{order.with_review ? "с отзывом" : "без отзыва"}}</p>
+
+</div>
+<div class="my-progress">
+<a href="" ng-click="showIpAdresses(order._id)">
+  <div>
+    <div class="row progress-row" >
+      <p class="text-left-progress">{{order.count_installed}}</p>
+      <p class="text-right-progress">из {{order.max_count_installs}}</p>
+    </div>
+
+    <div class="row">
+      <div class="progress">
+        <div data-percentage="0%" style="width: {{(order.count_installed/order.max_count_installs)*100}}%;" class="progress-bar progress-bar-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <p class="text-left" id="text-installs">установок</p>
+      <!-- <p class="text-right-progress">1 день из {{order.count_in_day}}</p> -->
+    </div>
+  </div>
+</a>
+</div>
+<div class="row">
+
+  <p class="text-left-money inine">Бюджет</p>
+  <p class="text-money inine" >{{order.count_money_r}} Р</p>
+  <a href="" class="right-inline" ng-click="addMoney(order, $event)">
+    <img src="icons/campaign-deposit@2x.png" class="icon-size-25">
+    <img src="icons/campaign-deposit-hover@2x.png" class="icon-size-25 hovered">
+  </a>
+</div>
+
+<div class="row row-colored">
+  <div  class="inine">
+    <div class="row">
+      <p class="text-left-status">Статус</p>
+
+
+    </div>
+    <div class="row">
+      <p class="text-process">{{order.count_money_r < order.price_one_install ? "завершён" : (count_money_r < 0 ? (order.state == 0 ? 'Пополните баланс' : order.moderated == 0 ? 'модерация' : (order.moderated == -1 ? 'заблокирован' : (order.state == 0 ? 'пауза' : 'выполняется'))) : (order.moderated == 0 ? 'модерация' : (order.moderated == -1 ? 'заблокирован' : (order.state == 0 ? 'пауза' : 'выполняется'))))}}</p>
+
+    </div>
+  </div>
+  <div class="right-inline">
+
+    <div ng-style="pauseIconStyle"  style="visibility : {{order.state == 0 ? 'collapse' : 'visible'}}; display : {{order.state == 0 ? 'none' : 'flex'}}">
+      <a class="right-inline" href="" ng-click="setStateOrderPause(order._id, order, $index, $event)" >
+        <img src="icons/campaign-pause@2x.png" class="icon-size-25-pause"  ng-model="pausePlayBTN">
+        <img src="icons/campaign-pause-hover@2x.png" class="icon-size-25-pause hovered" ng-model="pausePlayBTN">
+      </a>
+    </div>
+    <div ng-style="playIconStyle" style="visibility : {{order.state == 1 ? 'collapse' : 'visible'}}; display : {{order.state == 1 ? 'none' : 'flex'}}">
+      <a class="right-inline" href="" ng-click="setStateOrderPlay(order._id, order, $index, $event)">
+        <img src="icons/campaign-play@2x.png" class="icon-size-25-pause"  ng-model="pausePlayBTN">
+        <img src="icons/campaign-play-hover@2x.png" class="icon-size-25-pause hovered" ng-model="pausePlayBTN">
+      </a>
+    </div>
+
+  </div>
+</div>
+</div>
+
+</div>

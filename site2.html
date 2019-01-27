@@ -1,0 +1,377 @@
+<script src="scripts/menuAnimation.js"></script>
+
+<my-navbar></my-navbar>
+<my-menu></my-menu>
+
+<!--Body content-->
+<div class="content" ng-controller="myAppController">
+  <div class="top-bar">
+    <a href="#menu" class="side-menu-link burger">
+      <span class='burger_inside' id='bgrOne'></span>
+      <span class='burger_inside' id='bgrTwo'></span>
+      <span class='burger_inside' id='bgrThree'></span>
+    </a>
+  </div>
+  <section class="content-inner" id="cabinet-center">
+<!-- <div class="row-navbar-top">
+  <div class="row vertical-align">
+    <div class="row">
+      <div class="row vertical-align">
+        <p>Доступно</p>
+        <p >{{count_money_r}} Р</p>
+
+      </div>
+      <div class="row">
+          <a class="nav-bot-row" href="http://upmob.ru/pay">Пополнить</a>
+
+      </div>
+    </div>
+
+
+
+  </div>
+</div> -->
+
+
+
+    <div class="container-fluid" id="center-container">
+
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <p class="my-orders-text">Новый заказ</p>
+      </div>
+      <div class="row" id="package-top">
+
+      </div>
+
+
+
+      <div class="row invisible-row vertical-align" id="package-top" ng-style="myStyle">
+
+        <img src="http://{{app_icon}}" ng-model='appIconIV'
+        class="img-app-icon"></img>
+        <p style="margin-left: 10px; margin-top : 10px">{{app_name_price}}</p>
+
+      </div>
+      <div class="row" id="package-top">
+        <div class="col-lg-6 col-md-7 " id="border">Ссылка на приложение
+          <div class="row">
+            <input ng-model="packageET" ng-model-options='{ debounce: 1000 }' ng-click="showApps()"
+            ng-change='sendRequest()' id="package-input" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 dropdown-toggle" placeholder="https://play.google.com/store/apps/details?id=com.developer.app&hl=ru">
+            <md-progress-circular ng-style="progressPackageStyle" style="visibility : collapse; display : none" id="right-progress" md-mode="indeterminate" md-diameter="15"></md-progress-circular>
+
+          </input>
+            <ul class="dropdown-menu" ng-style="appsListStyle" style="visibility:collapse; display : none">
+              <li class="device_img" ng-repeat='app in apps' ng-click="getAppName(app.name, app.icon, app.bundle, app.type_os, app.genre, app.price, app.version_os, app.appstore_id)"><a   href="">
+                <img src="{{app.type_os == 'android' ? 'icons/android.png' : 'icons/apple.png'}}"
+                class="img-device-icon"></img>
+                <img src="{{app.type_os == 'android' ? 'icons/android.png' : 'icons/apple.png'}}"
+                class="img-device-icon hovered"></img>
+                {{app.name}} ({{app.bundle}})
+
+                </a></li>
+            </ul>
+          </div>
+
+        </div>
+        <!-- или AppStore -->
+        <p class="col-lg-6 col-md-5 subscription-text">Вставьте сюда ссылку на ваше приложение в Google play или App Store</p>
+      </div>
+
+      <div class="row line-row">
+
+      </div>
+
+      <div class="row" id="package-row-switch">
+        <div class="col-lg-6 col-md-7 vertical-align">
+
+          <label class="switch" >
+            <input type="checkbox" ng-model="installsWordSwitch" ng-change="installsWordSwitchClicked()">
+
+            </input>
+            <div class="slider round"></div>
+          </label>
+
+          <p class="text-pre-subscr">Установки по поисковому запросу</p>
+        </div>
+
+
+        <p class="col-lg-6 col-md-5 subscription-text-switch">Поможет поднять ваше приложение в топе по конкретному запросу.</p>
+      </div>
+
+      <div class="row invisible-row vertical-align" id="package-no-margin-top" ng-style="myStyleSearch">
+
+        <p style="margin-left: 10px; margin-top : 10px">Текущая позиция по запросу: {{search_pos}}</p>
+
+      </div>
+      <div class="row invisible-row" id="package-row-5" ng-style="installsWordSwitchStyle">
+        <div class="col-lg-6 col-md-7" id="border">Поисковый запрос
+          <div class="row">
+            <input ng-model-options='{ debounce: 1300 }' ng-change="getAppPosition()" ng-model="searchTextET" id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="Например, накрутка лайков">
+              <md-progress-circular ng-style="progressStyle" style="visibility : collapse; display : none" id="right-progress" md-mode="indeterminate" md-diameter="15"></md-progress-circular>
+            </input>
+          </div>
+
+        </div>
+        <p class="col-lg-6 col-md-5 subscription-text">Чтобы продвижение по запросу работало, ваше приложение уже должно быть в поисковой выдаче по этому запросу, хоть на последнем месте.</p>
+
+      </div>
+
+      <div class="row line-row" ng-style="trackUrlStyle" style="visible : collapse; display : none">
+
+      </div>
+
+      <div class="row" id="package-row-switch" ng-style="trackUrlStyle" style="visible : collapse; display : none">
+        <div class="col-lg-6 col-md-7 vertical-align">
+
+          <label class="switch" >
+            <input type="checkbox" ng-model="trackUrlSwitch" ng-change="trackUrlSwitchClicked()">
+
+            </input>
+            <div class="slider round"></div>
+          </label>
+
+          <p class="text-pre-subscr">Tracking ссылка</p>
+        </div>
+        <p class="col-lg-6 col-md-5 subscription-text-switch">Поможет отследить все установки с нашего сервиса. Если не уверены, что такое Tracking ссылка, то сначала свяжитесь с нашим менеджером.</p>
+      </div>
+
+      <div class="row invisible-row" id="package-row-5" ng-style="trackUrlSwitchStyle">
+        <div class="col-lg-6 col-md-7" id="border">Ссылка для отслеживания
+          <div class="row">
+            <input ng-model="trackUrlET" id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="">
+          </div>
+
+        </div>
+        <p class="col-lg-6 col-md-5 subscription-text">Ссылка нужна, если вы хотите отслеживать установки с нашего сервиса.</p>
+      </div>
+
+
+      <div class="row invisible-row" id="package-top" ng-style="trackUrlSwitchStyle">
+        <div class="col-lg-6 col-md-7" id="border">Описание задания
+          <div class="row">
+            <input ng-model="descriptionText1ET" id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="Например, зарегистрироваться">
+          </div>
+
+        </div>
+        <p class="col-lg-6 col-md-5 subscription-text">Краткое описание задания (необязательное поле). Мы не гарантируем выполнение того, что вы напишете, потому что не можем это проверить.</p>
+      </div>
+
+
+      <div class="row line-row">
+
+      </div>
+
+      <div class="row" id="package-row-switch">
+        <div class="col-lg-6 col-md-7 vertical-align">
+
+          <label class="switch" >
+            <input type="checkbox" ng-model="openIn3dSwitch" ng-change='calculate()'>
+            <div class="slider round"></div>
+          </label>
+
+          <p class="text-pre-subscr">Открыть через 3 дня</p>
+          <p class="text-rub">{{costOpen3dDayTV == undefined ? "" : costOpen3dDayTV}}</p>
+        </div>
+
+        <p class="col-lg-6 col-md-5 subscription-text-switch">Возврат в приложение помогает повысить позицию в поисковой выдаче.</p>
+      </div>
+
+      <div class="row line-row">
+
+      </div>
+
+      <div class="row" id="package-row1">
+        <div class="col-lg-6 col-md-7" id="border-2">{{minCountReviews}}
+          <div class="row">
+            <input  ng-model="installsCountET" id="package-input" type="number" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="Например 500" ng-change='calculate()'></input>
+          </div>
+
+        </div>
+        <p class="col-lg-6 col-md-5 subscription-text">Какое общее количество установок вы хотите?</p>
+      </div>
+
+      <div class="row line-row">
+
+      </div>
+
+      <div class="row" id="package-row-switch">
+        <div class="col-lg-6 col-md-7 vertical-align">
+
+          <label class="switch" >
+            <input type="checkbox" ng-model="reviewSwitch" ng-change='rewiewSwitchClicked()'>
+            <div class="slider round"></div>
+          </label>
+
+          <p class="text-pre-subscr">С отзывом</p>
+          <p class="text-rub">{{costWithReviewsTV == undefined ? "" : costWithReviewsTV}}</p>
+        </div>
+
+        <p class="col-lg-6 col-md-5 subscription-text-switch">Обратите внимание, что в Google Play и App Strore есть модерация, из-за чего может быть удалена часть отзывов. Рекомендуется заказывать менее 10% от общего числа установок.</p>
+      </div>
+
+
+      <div class="row invisible-row" id="package-row-5" ng-style="rewiewSwitchStyle">
+        <div class="col-lg-6 col-md-7" id="border">Ключевоe слово для отзыва
+          <div class="row">
+            <input ng-model="reviewWordET" id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="Например, лайки">
+          </div>
+
+        </div>
+        <p class="col-lg-6 col-md-5 subscription-text">Если вы хотите продвинуться по ключевому слову, но в поиске не выдаетесь по нему, то ключевое слово в отзыве - это то, что вам нужно.</p>
+      </div>
+
+
+      <div class="row invisible-row" id="package-top" ng-style="rewiewSwitchStyle">
+        <div class="col-lg-6 col-md-7" id="border">Важное пожелание
+          <div class="row">
+            <input ng-model="wishET" id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="Например, писать по-русски">
+          </div>
+
+        </div>
+        <p class="col-lg-6 col-md-5 subscription-text">Можете написать, что вам достаточно только оценки или чтобы отзыв был не короче 100 символов.</p>
+      </div>
+      <div class="row line-row">
+
+      </div>
+
+      <div class="row" id="package-row-switch">
+        <div class="col-lg-6 col-md-7 vertical-align">
+
+          <label class="switch" >
+            <input type="checkbox" ng-model="upGoodReviewsSwitch" ng-change='calculate()'>
+            <div class="slider round"></div>
+          </label>
+
+          <p class="text-pre-subscr">Поднять хорошие отзывы</p>
+          <p  class="text-rub">{{costUpGoodReviewsTV == undefined ? "" : costUpGoodReviewsTV}}</p>
+        </div>
+
+        <p class="col-lg-6 col-md-5 subscription-text-switch">Исполнители будут лайкать положительные  отзывы, благодаря чему эти отзывы станут заметнее.</p>
+      </div>
+
+      <div class="row line-row">
+
+      </div>
+
+      <div class="row" id="package-row-switch">
+        <div class="col-lg-6 col-md-7 vertical-align">
+
+          <label class="switch" >
+            <input type="checkbox" ng-model="toFewDaysSwitch" ng-change='toFewDaysSwitchClicked()'>
+            <div class="slider round"></div>
+          </label>
+
+          <p class="text-pre-subscr">Установить ограничение на скачивания</p>
+        </div>
+
+        <p class="col-lg-6 col-md-5 subscription-text-switch">Используйте ограничения на скачивания, чтобы распределить установки на длительный срок</p>
+      </div>
+
+      <div class="row invisible-row" id="package-row-5" ng-style="toFewDaysSwitchStyle">
+        <div class="col-lg-4 col-md-4" id="border">Максимум в день
+          <div class="row">
+            <input ng-model="limitDayET" id="package-input" type="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" name="inputText" placeholder="Например, 50">
+
+          </div>
+
+        </div>
+        <div class="col-lg-2 col-md-3 vertical-align">
+          <a href="" ng-click="minusDaysClicked()">
+            <img  class="icon-minus" src="icons/minus_icon.png">
+            <img src="icons/minus_icon_hovered.png" class="icon-minus hovered">
+          </a>
+          <a href="" ng-click="plusDaysClicked()" >
+            <img class="icon-plus" src="icons/plus_icon.png">
+            <img src="icons/plus_icon_hovered.png" class="icon-plus hovered">
+          </a>
+        </div>
+
+        <p class="col-lg-6 col-md-5 subscription-text">Выберите оптимальное ограничение на скачивание приложения в день</p>
+      </div>
+
+      <div class="row invisible-row" id="package-row-switch"  ng-style="toFewDaysSwitchStyle">
+        <div class="col-lg-6 col-md-7 vertical-align">
+
+          <label class="switch" >
+            <input type="checkbox" ng-model="toFewHoursSwitch" ng-change='toFewHoursSwitchClicked()'>
+            <div class="slider round"></div>
+          </label>
+
+          <p class="text-pre-subscr">Установок в час</p>
+        </div>
+
+        <p class="col-lg-6 col-md-5 subscription-text-switch">Выберите максимальное количество установок в час</p>
+      </div>
+
+      <div class="row invisible-row" id="package-row-5" ng-style="toFewHoursSwitchStyle">
+        <div class="col-lg-4 col-md-4" id="border">Количество установок в час
+          <div class="row">
+            <input ng-model="limitHourET" id="package-input" type="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" name="inputText" placeholder="Например, 3">
+
+          </div>
+
+        </div>
+        <div class="col-lg-2 col-md-3 vertical-align">
+          <a href="" ng-click="minusHoursClicked()">
+            <img  class="icon-minus" src="icons/minus_icon.png">
+            <img src="icons/minus_icon_hovered.png" class="icon-minus hovered">
+          </a>
+          <a href="" ng-click="plusHoursClicked()" >
+            <img class="icon-plus" src="icons/plus_icon.png">
+            <img src="icons/plus_icon_hovered.png" class="icon-plus hovered">
+          </a>
+        </div>
+
+        <p class="col-lg-6 col-md-5 subscription-text">Выберите удобное для вас количество установок в минуту.</p>
+      </div>
+
+      <div class="row invisible-row" id="package-row-switch"  ng-style="toFewHoursSwitchStyle">
+        <div class="col-lg-6 col-md-7 vertical-align">
+
+          <label class="switch" >
+            <input type="checkbox" ng-model="toFewMinutesSwitch" ng-change='toFewMinutesSwitchClicked()'>
+            <div class="slider round"></div>
+          </label>
+
+          <p class="text-pre-subscr">Установок в минуту</p>
+        </div>
+
+        <p class="col-lg-6 col-md-5 subscription-text-switch">Выберите максимальное количество установок в минуту</p>
+      </div>
+
+      <div class="row invisible-row" id="package-row-5" ng-style="toFewMinutesSwitchStyle">
+        <div class="col-lg-4 col-md-4" id="border">Количество установок в минуту
+          <div class="row">
+            <input ng-model="limitMinuteET" id="package-input" type="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" name="inputText" placeholder="Например, 3">
+
+          </div>
+
+        </div>
+        <div class="col-lg-2 col-md-3 vertical-align">
+          <a href="" ng-click="minusMinutesClicked()">
+            <img  class="icon-minus" src="icons/minus_icon.png">
+            <img src="icons/minus_icon_hovered.png" class="icon-minus hovered">
+          </a>
+          <a href="" ng-click="plusMinutesClicked()" >
+            <img class="icon-plus" src="icons/plus_icon.png">
+            <img src="icons/plus_icon_hovered.png" class="icon-plus hovered">
+          </a>
+        </div>
+
+        <p class="col-lg-6 col-md-5 subscription-text">Выберите удобное для вас количество установок в минуту.</p>
+      </div>
+
+      <div class="row vertical-align" id="package-row1">
+        <button ng-click="createTask()" id="start-campaign-btn" type="button" class="btn btn-primary btn-md">Сохранить</button>
+        <p class="text-cost-left">Стоимость заказа</p>
+        <p class="text-cost-right">{{count_money}} Р</p>
+
+
+
+      </div>
+
+
+
+    </div>
+  </section>
+</div>

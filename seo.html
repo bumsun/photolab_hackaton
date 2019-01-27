@@ -1,0 +1,115 @@
+<script src="scripts/menuAnimation.js"></script>
+
+<my-navbar></my-navbar>
+<my-menu></my-menu>
+
+<!-- <script src="scripts/statistics.js"></script> -->
+<div class="content" ng-controller="mySeoController">
+  <div class="top-bar">
+    <a href="#menu" class="side-menu-link burger">
+      <span class='burger_inside' id='bgrOne'></span>
+      <span class='burger_inside' id='bgrTwo'></span>
+      <span class='burger_inside' id='bgrThree'></span>
+    </a>
+  </div>
+  <section class="content-inner" id="cabinet-center">
+    <div class="container-fluid" id="center-container">
+
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <p class="my-orders-text">ASO анализ</p>
+      </div>
+      <div class="row" id="package-top">
+
+      </div>
+      <div class="row" id="package-top">
+        <div class="col-lg-6 col-md-7 " id="border">Ссылка на приложение
+          <div class="row">
+            <input ng-model="packageET" ng-model-options='{ debounce: 1000 }' ng-click="showApps()"
+            ng-change='sendRequest()' id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 dropdown-toggle" placeholder="https://play.google.com/store/apps/details?id=com.developer.app&hl=ru">
+            <ul class="dropdown-menu" ng-style="appsListStyle" style="visibility:collapse; display : none">
+              <li ng-repeat='app in apps' ng-click="getAppName(app.bundle, app.name, app.type_os, app.appstore_id)"><a href="">
+                <img src="{{app.type_os == 'android' ? 'icons/android.png' : 'icons/apple.png'}}"
+                class="img-device-icon"></img>
+                <img src="{{app.type_os == 'android' ? 'icons/android.png' : 'icons/apple.png'}}"
+                class="img-device-icon hovered"></img>
+                {{app.name}} ({{app.bundle}})</a></li>
+            </ul>
+          </div>
+
+        </div>
+        <!-- или AppStore -->
+        <p class="col-lg-6 col-md-5 subscription-text">Вставьте сюда ссылку на ваше приложение в Google play или App Store</p>
+      </div>
+      <!-- <div class="row vertical-align" id="package-top">
+        <div style="min-width : 240px; margin-right : 15px;">
+          <div class="btn-group" style="min-width : 240px">
+            <button type="button" class="btn btn-default"  style="margin-left : -15px">{{selectBTN == undefined ? "Выберите приложение" : selectBTN | limitTo:19}}</button>
+            <button type="button" ng-click="showApps()" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+            <ul class="dropdown-menu" ng-style="appsListStyle" style="visibility:hidden">
+              <li ng-repeat='app in apps' ng-click="getAppName(app.bundle, app.name)"><a href="#">{{app.name}} ({{app.bundle}})</a></li>
+            </ul>
+          </div>
+        </div>
+
+
+      </div> -->
+      <div class="row vertical-align" id="margin-top-check" ng-style="requestsTabelStyle" style="visibility : collapse; display : none">
+        <md-checkbox class="green"  type="checkbox" ng-model="highCheck" ng-change="checkClicked()" aria-label="Высокочастотные">Высокочастотные запросы</md-checkbox>
+        <md-checkbox class="green" type="checkbox" ng-model="mediumCheck" ng-change="checkClicked()" aria-label="Среднечастотные">Среднечастотные запросы</md-checkbox>
+        <md-checkbox class="green" type="checkbox" ng-model="lowCheck" ng-change="checkClicked()" aria-label="Низкочастотные">Низкочастотные запросы</md-checkbox>
+      </div>
+
+      <div class="row" id="graphic-row" ng-style="graphicStyleSEO">
+        <!--  -->
+        <div class="col-md-12">
+          <canvas id="line" class="chart chart-line" chart-data="dataSEO" chart-colors="colors"
+          chart-labels="labelsSEO" chart-series="series" chart-options="options"
+          chart-dataset-override="datasetOverride" chart-click="onClick">
+        </canvas>
+      </div>
+    </div>
+    <div class="row icon-placeholder-bank" style="visibility : collapse; display : none; margin-top : 130px" ng-style="noStatsStyleSEO">
+      <img class="center" src="icons/icon_empty_stat.png" align="center">
+    </div>
+    <div class="row stats-template center" ng-style="noStatsStyleSEO"  style="visibility : collapse; display : none">
+         <p class="center" ng-model="statsTV">{{statTextTV}}</p>
+    </div>
+    <div class="row" id="outer" ng-style="progressStyle">
+      <md-progress-circular id="inner" md-mode="indeterminate" md-diameter="40"></md-progress-circular>
+    </div>
+<div ng-style="requestsTabelStyle" style="visibility : collapse; display : none">
+  <div class="row" style="height : 2px; background : #f6f9fb; margin : 20px">
+
+  </div>
+  <div class="row text-position">Статистика позиций ключевых слов</div>
+  <div class="row" id="package-row-position">
+    <div class="col-lg-6 col-md-7" id="border">Фильтр по слову
+      <div class="row">
+        <input ng-model-options='{ debounce: 300 }'  ng-model="filterTextET" id="package-input" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="Например, накрутка" ng-change='filtering()'></input>
+      </div>
+
+    </div>
+    <p class="col-lg-6 col-md-5 subscription-text">Если фильтр не задан, то показываются только высокочастотные запросы.</p>
+  </div>
+
+<div class="row" style="margin-left : 40px">
+<div class="row text-key-grey-back vertical-align">
+  <p class="text-keywords-top-index">№</p>
+  <p class="text-keywords-top-first">Запрос</p>
+  <p class="text-keywords-top">{{day1}}</p>
+  <p class="text-keywords-top">{{day2}}</p>
+  <p class="text-keywords-top">{{day3}}</p>
+  <p class="text-keywords-top">{{day4}}</p>
+  <p class="text-keywords-top">{{day5}}</p>
+  <p class="text-keywords-top">{{day6}}</p>
+  <p class="text-keywords-top">{{day7}}</p>
+  <p class="text-keywords-top-last">Будущее</p>
+</div>
+<keywords></keywords>
+</div>
+</div>
+
+  </div>
+
+</section>
+</div>

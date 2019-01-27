@@ -1,0 +1,86 @@
+
+
+
+<!-- <script src="scripts/shop.js"></script> -->
+<script src="scripts/menuAnimation.js"></script>
+<script src="//www.free-kassa.ru/widget/w.js"></script>
+<script src="https://widget.unitpay.ru/unitpay.js"></script>
+<my-navbar></my-navbar>
+<my-menu></my-menu>
+
+<!--Body content-->
+<div class="content" ng-controller="myPayController">
+  <div class="top-bar">
+    <a href="#menu" class="side-menu-link burger">
+      <span class='burger_inside' id='bgrOne'></span>
+      <span class='burger_inside' id='bgrTwo'></span>
+      <span class='burger_inside' id='bgrThree'></span>
+    </a>
+  </div>
+  <section class="content-inner" id="cabinet-center">
+    <div class="container-fluid" id="center-container">
+
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <p class="my-orders-text">Оплата</p>
+        </div>
+
+
+      </div>
+
+
+      <div class="row" id="package-money">
+        <div class="col-lg-6 col-md-7" id="border">Введите сумму оплаты
+          <div class="row">
+            <input ng-model="moneyET" name="sum" id="package-input" value="1000" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></input>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Кнопку "Оплатить", можно назвать по своему, например value="Оплатить за курсы вождения"
+      или value="Оплатить подписку на журнал" и т.д.                                        -->
+      <input ng-click="onPayClicked()" type="submit" value="Оплатить" id="make-purchase-btn" class="btn btn-primary btn-md">
+      <input ng-click="onPayClickedFreeKassa()" ng-style="freeKassaStyle" style="visibility : collapse; display : none" type="submit" value="Kassa" id="make-purchase-btn" class="btn btn-primary btn-md">
+      <!-- <div class="row">
+<font style="background : #FFFF00">blue asd sadas d</font>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <p class="my-orders-text">Тестовая оплата(для interkassa)</p>
+        </div>
+
+
+      </div>
+      <div class="row" id="package-money">
+
+      <form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8">
+       <input type="hidden" name="ik_co_id" value="5a5f40e63c1eaf69248b456e" />
+       <input type="hidden" name="ik_pm_no" value="ID_4233" />
+        <div class="col-lg-6 col-md-7" id="border">Введите сумму оплаты
+       <div class="row">
+         <input ng-model="moneyET" name="ik_am" id="package-input" value="1000" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></input>
+       </div>
+       </div>
+
+       <input type="hidden" name="ik_x_email" value="{{email}}" />
+
+       <input type="hidden" name="ik_cur" value="RUB" />
+       <input type="hidden" name="ik_desc" value="Пополнение счета" />
+
+      <input type="submit" value="Оплатить" id="make-purchase-btn" class="btn btn-primary btn-md">
+
+
+
+
+
+      </form>
+
+  </div> -->
+
+
+    </div>
+
+  </section>
+
+</div>

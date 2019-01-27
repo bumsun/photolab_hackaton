@@ -1,0 +1,36 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Mango (Fruit)</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+    <form action="https://demomoney.yandex.ru/eshop.xml" method="POST">
+
+<!-- Эти поля обязательные, их нельзя удалять из платежной формы =============================
+     в полях value="" в строках shopid и scid пропишите требуемые значения                 -->
+    <input name="shopId" value="150673" type="hidden">
+    <input name="scid" value="556596" type="hidden">
+    <input name="customerNumber" value="Покупатель N1"><!-- Идентификатор вашего покупателя -->
+    <input name="sum" value="10.00"><!-- Сумма покупки (руб.) -->
+
+<!-- Кнопку "Оплатить", можно назвать по своему, например value="Оплатить за курсы вождения"
+    или value="Оплатить подписку на журнал" и т.д.                                        -->
+    <input type="submit" value="Оплатить">
+    </form>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+
+      <md-button ng-click="answer('useful')">
+        Пополнить
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

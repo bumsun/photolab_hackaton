@@ -1,0 +1,56 @@
+<!-- <script src="scripts/myorders.js"></script> -->
+<script src="scripts/menuAnimation.js"></script>
+
+<my-navbar></my-navbar>
+<my-menu></my-menu>
+
+<!--Body content-->
+<div class="content" ng-controller="myOrdersController">
+  <div class="top-bar">
+        <a href="#menu" class="side-menu-link burger">
+          <span class='burger_inside' id='bgrOne'></span>
+          <span class='burger_inside' id='bgrTwo'></span>
+          <span class='burger_inside' id='bgrThree'></span>
+        </a>
+      </div>
+
+    <section class="content-inner" id="cabinet-center">
+      <div class="container-fluid" id="center-container">
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+              <p class="my-orders-text">Мои заказы</p>
+          </div>
+        <div class="col-md-3 col-md-offset-5 col-lg-3 col-lg-offset-5 col-sm-6 col-xs-6 ">
+  <button ng-click="createNewOrder()" id="start-campaign-btn-orders" type="button" class="btn btn-primary btn-md">Создать новый заказ</button>
+        </div>
+
+        </div>
+        <div class="row">
+          <div class="btn-group" style="margin-left : 30px; margin-top : 20px; margin-bottom : 15px;">
+            <button type="button" class="btn btn-default" >{{selectFilter == undefined ? "Все" : selectFilter | limitTo:19}}</button>
+            <button type="button" ng-click="showFilters()" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+            <ul class="dropdown-menu" ng-style="filtersListStyle" style="visibility:hidden">
+
+              <li ng-repeat='filter in filters' ng-click="filterGroup(filter)"><a href="#">{{filter}}</a></li>
+
+            </ul>
+          </div>
+        </div>
+        <!-- <div class="row col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xs-offset-1"> -->
+
+
+        <my-orders ng-style="myOrdersStyle"></my-orders>
+
+        <div class="row first-task center" ng-style="myOrdersCreateStyle" style="visibility : collapse; display : none">Создать свой первый заказ - это просто!</div>
+        <button style="visibility : collapse; display : none" class="center btn btn-primary btn-md" id="create-btn-order" ng-click="createNewOrder()" ng-style="myOrdersCreateStyle">Создать</button>
+
+
+
+
+
+      </div>
+
+    </section>
+
+  </div>

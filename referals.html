@@ -1,0 +1,56 @@
+
+
+
+<!-- <script src="scripts/shop.js"></script> -->
+<script src="scripts/menuAnimation.js"></script>
+
+<my-navbar></my-navbar>
+<my-menu></my-menu>
+
+<!--Body content-->
+<div class="content" ng-controller="myReferalController">
+  <div class="top-bar">
+    <a href="#menu" class="side-menu-link burger">
+      <span class='burger_inside' id='bgrOne'></span>
+      <span class='burger_inside' id='bgrTwo'></span>
+      <span class='burger_inside' id='bgrThree'></span>
+    </a>
+  </div>
+  <section class="content-inner" id="cabinet-center">
+    <div class="container-fluid" id="center-container">
+
+      <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+          <p class="my-orders-text">Заработай с нами</p>
+        </div>
+
+
+      </div>
+      <div class="row">
+        <p class="subscription-text-referals">Получи 15% от расходов твоих друзей. Деньги можно потратить только на рекламу приложений. Регистрация по своей реф ссылке = бан с блокировкой средств.</p>
+      </div>
+      <div class="row">
+        <p class="subscription-text-referals">Скопируйте следующую ссылку и дайте другу.</p>
+      </div>
+      <div class="row vertical-align" id="package-row-menu">
+        <button  id="share-btn" type="button" class="btn btn-primary btn-md" ng-click="copyToClip()">Копировать ссылку</button>
+        <p class="subscription-text-referals">https://upmob.ru/auth?referal={{myId}}</p>
+      </div>
+      <div class="row">
+        <p class="subscription-text-referals">{{refsText}}</p>
+      </div>
+      <div class="row gray-back vertical-align" ng-style="refsListStyle">
+        <p class="text-referals-top">Дата</p>
+        <p class="text-referals-top-2">Email друга</p>
+        <p class="text-referals-top-3">Заработок</p>
+
+      </div>
+      <my-referals ng-style="refsListStyle"></my-referals>
+
+
+
+    </div>
+
+  </section>
+
+</div>

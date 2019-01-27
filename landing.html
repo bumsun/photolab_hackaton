@@ -1,0 +1,470 @@
+<!DOCTYPE HTML>
+<!--
+	Fractal by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Продвижение в Google Play и App Store</title>
+		<meta charset="utf-8" />
+    <meta name="keywords" content="продвижение и раскрутка приложений в Google Play и App Store">
+    <meta content="Продвижение мобильного Android и iOS приложений в топ Google Play и App Store гарантирует 100% прирост новых пользователей. Раскрутка мобильных приложений в Google Play и App Store - увеличьте прибыль своего бизнеса!" name="description">
+    <meta content="UpMob" property="og:site_name">
+    <meta content="Продвижение и раскрутка приложений в Google Play и App Store| UpMob" property="og:title">
+    <meta content="Продвижение мобильного приложения в топ Google Play и App Store гарантирует 100% прирост новых пользователей. Выбирая UpMob - вы совершаете грамотные инвестиции в развитие своего проекта." property="og:description">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="interkassa-verification" content="5f1d3b14f55589682a35975e6768c516" />
+    <meta name="verification" content="b28554d34de6b772a2a8a32ea846c8" />
+    <meta name="verification" content="ae2c79e9d6e82711cf3d45ad413b8e" />
+
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css"/>
+    
+
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!-- Yandex.Metrika counter -->
+
+		<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+      
+      <script type="text/javascript" src="//vk.com/js/api/openapi.js?154"></script>
+      
+      <!-- VK Widget -->
+      <div id="vk_community_messages"></div>
+      <script type="text/javascript">
+      VK.Widgets.CommunityMessages("vk_community_messages", 157374277, {tooltipButtonText: "Есть вопрос?"});
+      </script>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+			  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+			  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+			  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+			  <!-- Angular Material Library -->
+			  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+			<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+<script type="text/javascript" >
+ angular.module('BlankApp', ['ngMaterial'])
+ .controller('myAppController', function($http, $scope, $mdDialog) {
+  $scope.status = '  ';
+  $scope.customFullscreen = false;
+
+  $scope.showPrompt = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.prompt()
+      .title('Мы свяжемся c Вами незамедлительно!')
+      .textContent('Введите свой Email, Skype или телефон')
+      .clickOutsideToClose(true)
+      .targetEvent(ev)
+      .ok('Отправить')
+      .cancel('Закрыть');
+
+    $mdDialog.show(confirm).then(function(result) {
+         $http({
+           method: 'POST',
+           url: 'https://upmob.ru/api/sendContact1',
+           data:{
+             'contact' : result
+           }
+         }).then(function successCallback(response) {
+              
+
+         }, function errorCallback(response) {
+
+         });
+       }, function() {
+
+       });
+
+  };
+
+  $scope.showPrompt2 = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.prompt()
+      .title('Мы свяжемся c Вами незамедлительно!')
+      .textContent('Введите свой Email, Skype или телефон')
+      .clickOutsideToClose(true)
+      .targetEvent(ev)
+      .ok('Отправить')
+      .cancel('Закрыть');
+
+    $mdDialog.show(confirm).then(function(result) {
+
+         $http({
+           method: 'POST',
+           url: 'https://upmob.ru/api/sendContact2',
+           data:{
+             'contact' : result
+           }
+         }).then(function successCallback(response) {
+              
+
+         }, function errorCallback(response) {
+
+         });
+       }, function() {
+
+       });
+  };
+
+  $scope.showPrompt3 = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.prompt()
+      .title('Мы свяжемся c Вами незамедлительно!')
+      .textContent('Введите свой Email, Skype или телефон')
+      .clickOutsideToClose(true)
+      .targetEvent(ev)
+      .ok('Отправить')
+      .cancel('Закрыть');
+
+    $mdDialog.show(confirm).then(function(result) {
+
+         $http({
+           method: 'POST',
+           url: 'https://upmob.ru/api/sendContact3',
+           data:{
+             'contact' : result
+           }
+         }).then(function successCallback(response) {
+              
+
+         }, function errorCallback(response) {
+
+         });
+       }, function() {
+
+       });
+  };
+
+  $scope.showPrompt4 = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.prompt()
+      .title('Мы свяжемся c Вами незамедлительно!')
+      .textContent('Введите свой Email, Skype или телефон')
+      .clickOutsideToClose(true)
+      .targetEvent(ev)
+      .ok('Отправить')
+      .cancel('Закрыть');
+
+    $mdDialog.show(confirm).then(function(result) {
+
+         $http({
+           method: 'POST',
+           url: 'https://upmob.ru/api/sendContact4',
+           data:{
+             'contact' : result
+           }
+         }).then(function successCallback(response) {
+              
+
+         }, function errorCallback(response) {
+
+         });
+       }, function() {
+
+       });
+  };
+
+  function DialogController($scope, $mdDialog) {
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
+});
+
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter46775670 = new Ya.Metrika({
+                    id:46775670,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+    function takeOrder(){
+    	 // BootstrapDialog.show({
+      //       message: 'Your most favorite fruit: <input type="text" class="form-control">',
+      //       onhide: function(dialogRef){
+      //           var fruit = dialogRef.getModalBody().find('input').val();
+      //           if($.trim(fruit.toLowerCase()) !== 'banana') {
+      //               alert('Need banana!');
+      //               return false;
+      //           }
+      //       },
+      //       buttons: [{
+      //           label: 'Close',
+      //           action: function(dialogRef) {
+      //               dialogRef.close();
+      //           }
+      //       }]
+      //   });
+		bootbox.prompt("What is your name?", function(result){ /* your callback code */ })
+    }
+   
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/46775670" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+	</head>
+	<body id="top" ng-app="BlankApp" ng-controller="myAppController" ng-cloak>
+		<!-- Header -->
+			<header id="header">
+				<div class="content">
+					<img src="icons/logo.png" alt="Продвижение в Google Play и App Store" style="width: 230px;" />
+					<p>Продвижение в Google Play и App Store<br />
+					от 3 рублей за установку</p>
+					<ul class="actions">
+						<li><a href="/auth" class="button special icon fa-sign-in">Войти</a></li>
+						<li><a ng-click="showPrompt4($event)" class="button icon">Заказать консультацию</a></li>
+					</ul>
+				</div>
+				<div class="image phone"><div class="inner"><img src="images/screen.png" alt="Продвижение мобильных приложений" /></div></div>
+			</header>			
+
+      <section id="one" class="wrapper" style="background-color: #fbfbfb;">
+        <div class="inner alt" style="margin-bottom: 50px;"> 
+          <h1 style="text-align:center; font-size: 1.75em; line-height: 1.5em;">Продвижение в Google Play и App Store</h1>
+          <p><b>Почему именно мотивированный трафик?</b><br/> - Мы на протяжении 5 лет занимались разработкой и продвижением собственных приложений. У нас не было больших бюджетов и попробовав мотивированный трафик у других компаний, мы поняли, что такой тип продвижения очень эффективен, но не достаточно дешев, как мог бы быть. Поэтому мы решили сделать свой сервис с самой низкой ценой на рынке. Ведь чем ниже цена за рекламу, тем больше вероятность, что она окупится.</p>
+
+          <p><b>Как нам удалось сделать самые низкие цены на рынке?</b><br/> - В нашей компании нет ни одного человека, который бы не умел писать код, благодаря этому мы смогли автоматизировать большую часть работы. И теперь можем позволить себе брать минимальную комиссию для поддержания сервиса. При этом мы лично приверяем каждый созданный вами заказ и даем полезные советы, если что-то можно улучшить. 
+          </p>
+
+           <p><b>Что дает мотивированный трафик в Google Play и App Store?</b><br/>
+            - Возможность продвигать по поисковому запросу это главное преимущество мотивированного трафика перед другими видами продвижения приложений. Если вы продвините свое приложение на первые места по ключевым поисковым запросам, то вы сможете донести свое приложение именно до вашей целевой аудитории. Плюс ко всему все задания в сервисе выполняются живыми людьми, поэтому если ваше приложение заинтересует этих людей, то они могут продолжить им пользоваться дальше.
+          </p>
+
+           <p>
+            <b>Можно ли вывести приложение в ТОП категории?</b><br/>
+            - В App Store это сделать просто. Вопрос лишь в количестве мотивированных установок. А в Google Play значительно сложнее. Алгоритмы Google Play собирают большое количество метрик: количество установок, удалений, ошибок, просмотров страницы и т.д. Исходя из них формируется ТОП приложений в категориях. Поэтому если вы закупите огромное количество мотивированных установок, то это увеличит шансы на попадание в ТОП категорий, но никак не гарантирует этого.
+          </p>
+          </div>
+      </section>
+
+      <section id="three" class="wrapper style2 special" style="background-color: #fff;">
+        <header class="major">
+          <h2 style="margin-bottom: 16px;">Схема работы нашего сервиса:</h2>
+        </header>
+        <img src="images/infographic.png" alt="Продвижение в Google Play и App Store" style="max-width: 800px; width:100%" />
+      </section>
+
+      <section class="wrapper style2 special">
+        <div class="inner alt">
+          <header class="major">
+            <ul class="icons labeled">
+              
+              <li><span class="icon fa-rub" ><span class="label">3 рубля установка по запросу</span></span></li>
+              <li><span class="icon fa-users"><span class="label">До 2000 установок в сутки</span></span></li>
+              <li><span class="icon fa-hashtag"><span class="label">Ключевые слова в отзывах</span></span></li>
+              <li><span class="icon fa-level-up"><span class="label">Поднятие хороших отзывов</span></span></li>
+              <li><span class="icon fa-line-chart"><span class="label">ASO анализ</span></span></li>
+              <li><span class="icon fa-clock-o"><span class="label">Распределение раскрутки по времени</span></span></li>
+              <li><span class="icon fa-check"><span class="label">Собственный источник трафика</span></span></li>
+              <li><span class="icon fa-ban"><span class="label">Защита от ботов</span></span></li>
+            </ul>
+          </div>
+        </header>
+        </div>
+      </section>
+
+      
+
+			<section id="two" class="wrapper">
+				<div class="inner alt" style="text-align:center">
+					<h2 style="text-align:center">Продвижение под ключ в Google Play или App Store</h2>
+					<section class="spotlight" style="display: inline-block;" >
+						<div style="border-radius: 5px; border: 1px solid #e5e9ee; position:relative; display: inline-block; width: 355px;margin:12px; white-space: nowrap;width: 300px; text-align: left;">
+                                        <div style="border-radius: 5px; padding: 20px; text-align:center; background: #2f3d49; color:#fff; font-size:18pt;width: 300px;" >Установка в Google Play</div>
+                                        <div style="padding: 20px; text-align:center; background:#fbfbfb">
+                                            <div style="font-size:30pt; color:#000;">от 3 рублей </div>
+                                            <div style="font-size:12pt; color:#000; margin-top: 10px;">только живые люди</div>
+                                        </div>
+                                        <ul style="list-style: none; margin-top:20px;">
+                                            <li>
+                                            	<span class="icon fa-globe" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+0 ₽ установка по запросу</span>
+                                            </li>
+                                            <li style="margin-top:10px;">
+                                            	<span class="icon fa-clock-o" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+2 ₽ отзыв</span>
+                                            </li>
+                                            <li style="margin-top:10px;">
+                                            	<span class="icon fa-gift" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+2 ₽ открытие на 3 день</span>
+                                            </li>
+                                            <li style="margin-top:10px;">
+                                            	<span class="icon fa-download" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+2 ₽ поднять хорошие отзывы</span>
+                                            </li>
+                                        </ul>
+                                        <a href="https://upmob.ru/auth#registration" class="button special icon" style="width:100%">Попробовать</a>
+                                        <!-- <a ng-click="showPrompt($event)" class="button special icon" style="width:100%">Попробовать</a> -->
+                                    </div>
+
+                                    <div style="border-radius: 5px; border: 1px solid #e5e9ee; position:relative; display: inline-block; width: 355px; margin:12px; white-space: nowrap;width: 300px; text-align: left;">
+                                        <div style="border-radius: 5px; padding-top: 20px;padding-bottom: 20px; text-align:center; background: #2f3d49; color:#fff; font-size:18pt; width: 300px;" >Установка в App Store
+										</div>
+                                        <div style="padding: 20px; text-align:center; background:#fbfbfb">
+                                            <div style="font-size:30pt; color:#000;">от 7 рублей</div>
+                                            <div style="font-size:12pt; color:#000; margin-top: 10px;">только живые люди</div>
+                                        </div>
+                                        <ul style="list-style: none; margin-top:20px;">
+                                            <li>
+                                            	<span class="icon fa-globe" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+0 ₽ установка по запросу</span>
+                                            </li>
+                                            <li style="margin-top:10px;">
+                                            	<span class="icon fa-clock-o" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+4 ₽ отзыв</span>
+                                            </li>
+                                            <li style="margin-top:10px;">
+                                            	<span class="icon fa-gift" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+4 ₽ открытие на 3 день</span>
+                                            </li>
+                                            <li style="margin-top:10px;">
+                                            	<span class="icon fa-download" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+4 ₽ поднять хорошие отзывы</span>
+                                            </li>
+                                        </ul>
+                                        <a href="https://upmob.ru/auth#registration" class="button special icon" style="width:100%">Попробовать</a>
+                                    </div>
+
+                                    <div style="border-radius: 5px; border: 1px solid #e5e9ee; position:relative; display: inline-block; width: 355px; margin:12px; white-space: nowrap; width: 300px; text-align: left;">
+                                        <div style="border-radius: 5px; padding-top: 20px;padding-bottom: 20px; text-align:center; background: #2f3d49; color:#fff; font-size:18pt;width: 300px;" >ASO оптимизация
+                                       </div>
+                                        <div style="padding: 20px; text-align:center; background:#fbfbfb">
+                                            <div style="font-size:30pt; color:#000;">от 0 рублей</div>
+                                            <div style="font-size:12pt; color:#000; margin-top: 10px;">настройка страницы приложения</div>
+                                        </div>
+                                        <ul style="list-style: none; margin-top:20px;">
+                                            <li>
+                                              <span class="icon fa-globe" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                              <span style="font-size:12pt; color:#000;">+ консультация бесплатно</span>
+                                                
+                                            </li>
+                                            <li style="margin-top:10px;">
+                                              <span class="icon fa-clock-o" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+ 3 000 р за иконку</span>
+                                            </li>
+                                            <li style="margin-top:10px;">
+                                              <span class="icon fa-gift" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+ 3 000 р за скриншоты</span>
+                                                
+                                            </li>
+                                            <li style="margin-top:10px;">
+                                              <span class="icon fa-download" style="color:#d0d5dd; margin-right:10px; top:2px;"></span>
+                                                <span style="font-size:12pt; color:#000;">+ 3 000 р за описание</span>
+
+                                            </li>
+                                        </ul>
+                                        <a ng-click="showPrompt4($event)" class="button special icon" style="width:100%">Заказать</a>
+                                    </div>
+
+					</section>
+				</div>
+			</section>
+		<!-- Two -->
+			
+				
+		<!-- Three -->
+
+      <section id="two" class="wrapper" style="background-color: #fbfbfb;">
+        <div class="inner alt" style="margin-bottom: 50px;"> 
+          <h2 style="text-align:center">Как раскрутить приложение в Google Play или App Store?</h2>
+          <div class="video-responsive" style="text-align: center;">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/82D7j7ePnKQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <section class="spotlight">
+            <div class="image"><img src="images/pic01.png" alt="Раскрутка в Google Play и App Store" /></div>
+            <div class="content" style="margin: 0 3em 0 3em;">
+              <h3>Шаг 1</h3>
+              <p>Пройдите простую регистрацию на нашем сайте, указав необходимую информацию.</p>
+            </div>
+          </section>
+          <section class="spotlight" >
+            <div class="image"><img src="images/pic02.png" alt="Раскрутка в Google Play и App Store" /></div>
+            <div class="content" style="margin: 0 3em 0 3em;">
+              <h3>Шаг 2</h3>
+              <p>Создайте и настройте свой первый заказ на продвижение приложения. Для этого достаточно скопировать ссылку на приложение из Google Play или App Store.</p>
+            </div>
+          </section>
+          <section class="spotlight">
+            <div class="image"><img src="images/pic03.png" alt="Раскрутка в Google Play и App Store" /></div>
+            <div class="content" style="margin: 0 3em 0 3em;">
+              <h3>Шаг 3</h3>
+              <p>Отслеживайте изменение позиции не выходя c сайта через функция "ASO анализ". Обычно изменения в Google Play вступают в силу на 3-ий день, а в App Store спустя несколько часов.</p>
+            </div>
+          </section>
+          </div>
+      </section>
+
+			<section id="three" class="wrapper style2 special" style="background-color: #fff;">
+				<div class="inner alt" style="margin-bottom: 50px;"> 
+            <header class="major">
+                    <h2 style="margin-bottom: 16px;">Раскрутка в Google Play и App Store</h2>
+                  </header>
+                        <p style="text-align:left;">Продвижение мобильных приложений в Google Play и App Store на данный момент абсолютно необходимая мера, поскольку из-за большой конкуренции в Google Play (2.5 млн. приложений) и App Store (2 млн. приложений) приложение без грамотной рекламной кампании попросту останется незамеченным.
+
+                          Команда специалистов UpMob уже более 4-х лет занимается раскруткой и продвижением мобильных приложений под Android и IOS. Благодаря квалифицированным сотрудникам, бесценному опыту и актуальным методам продвижения мы гарантируем 100% результат каждому клиенту!
+
+          Привлечь внимание пользователей и добиться роста установок можно многими способами. О своем опыте в продвижении приложений мы подробно описываем в нашем <a href="https://blog.upmob.ru/" style="color: #478eff; border-bottom-color: #478eff;">блоге</a>. Рекомендуем ознакомится с советами, чтобы ваше продвижение стало еще более эффективным.
+          </p>
+        </div>
+			</section>
+
+    <section id="two" class="wrapper" style="background-color: #fbfbfb;">
+      <header class="major">
+          <h2 style="margin-bottom: 16px;">Быстрый старт</h2>
+          <p>Для использования сервиса Upmob пройдите простую регистрацию.</p>
+        </header>
+        <ul class="actions" style="text-align: center;">
+          <li><a href="https://upmob.ru/auth#registration" class="button special icon fa-user-plus">Регистрация</a></li>
+        </ul>
+    </section>
+
+			<footer id="footer">
+
+				<ul class="icons">
+					<li><a href="https://vk.com/club157374277" class="icon fa-vk"><span class="label">Вконтакте</span></a>
+					</li>
+          <li><a href="http://blog.upmob.ru/" class="icon fa-book"><span class="label">Блог</span></a>
+          </li>
+				</ul>
+
+        <p class="copyright">Задавайте вопросы по почте - admin@upmob.ru<br/> <a href="https://upmob.ru/license">Пользовательское соглашение</a></p>
+				<p class="copyright">&copy; 2017-2018 upmob.ru</p>
+        <p style="visibility: hidden;"><a href="//www.free-kassa.ru/"><img src="http://www.free-kassa.ru/img/fk_btn/17.png"></a></p>
+			</footer>
+		<!-- Scripts -->
+	</body>
+</html>

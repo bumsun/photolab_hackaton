@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+  <title>side menu - Bootsnipp.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/main.css"></link>
+  <script src="libraries/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+  <script src="scripts/script.js"></script>
+  <script src="scripts/app.js"></script>
+
+</head>
+<body ng-app="siteModule" ng-controller="myAppController" >
+  <div class="wrap">
+    <my-navbar></my-navbar>
+    <my-menu></my-menu>
+
+    <!--Body content-->
+    <div class="content">
+      <div class="top-bar">
+        <a href="#menu" class="side-menu-link burger">
+          <span class='burger_inside' id='bgrOne'></span>
+          <span class='burger_inside' id='bgrTwo'></span>
+          <span class='burger_inside' id='bgrThree'></span>
+        </a>
+      </div>
+      <section class="content-inner" id="cabinet-center">
+        <div class="container-fluid" id="center-container">
+
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+            <p class="my-orders-text">Новый заказ</p>
+          </div>
+          <div class="row" id="package-top">
+
+          </div>
+
+          <div class="row invisible-row" id="package-row1" ng-style="myStyle">
+
+            <img src="{{app_icon}}" ng-model='appIconIV'
+            class="img-circle img-app-icon"></img>
+            <p style="margin-left: 10px">{{app_name}}</p>
+
+          </div>
+          <div class="row" id="package-top">
+            <div class="col-lg-6 col-md-7 " id="border">Пакет приложения
+              <div class="row">
+                <input ng-model="packageET" ng-model-options='{ debounce: 1000 }' ng-click="showApps()" data-toggle="dropdown"
+                ng-change='sendRequest()' id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 dropdown-toggle" placeholder="com.developer.app">
+                <ul class="dropdown-menu" ng-style="appsListStyle" style="visibility:hidden">
+                  <li ng-repeat='app in apps' ng-click="getAppName(app.bundle)"><a href="#">{{app.name}} ({{app.bundle}})</a></li>
+                </ul>
+              </div>
+
+            </div>
+            <p class="col-lg-6 col-md-5 subscription-text">Для ленивых можно вставлять ссылку на приложение</p>
+          </div>
+
+          <div class="row line-row">
+
+          </div>
+
+          <div class="row" id="package-row-switch">
+            <div class="col-lg-6 col-md-7 vertical-align">
+
+              <label class="switch" >
+                <input type="checkbox" ng-model="installsWordSwitch" ng-change="installsWordSwitchClicked()">
+                <div class="slider round"></div>
+              </label>
+
+              <p class="text-pre-subscr">Установки по поисковому запросу</p>
+            </div>
+
+            <p class="col-lg-6 col-md-5 subscription-text-switch">Нужно ли устанавливать приложение по запросу</p>
+          </div>
+
+          <div class="row invisible-row" id="package-row-5" ng-style="installsWordSwitchStyle">
+            <div class="col-lg-6 col-md-7" id="border">Поисковый запрос
+              <div class="row">
+                <input ng-model="searchTextET" id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="Например, накрутка лайков">
+              </div>
+
+            </div>
+            <p class="col-lg-6 col-md-5 subscription-text">Текст объяснялки подлиннее, любовь не картошка, не выбросишь в окошко. Лишние деньги - лишняя забота.</p>
+
+          </div>
+
+          <div class="row line-row">
+
+          </div>
+
+          <div class="row" id="package-row-switch">
+            <div class="col-lg-6 col-md-7 vertical-align">
+
+              <label class="switch" >
+                <input type="checkbox" ng-model="openIn3dSwitch" ng-change='calculate()'>
+                <div class="slider round"></div>
+              </label>
+
+              <p class="text-pre-subscr">Открыть через 3 дня</p>
+              <p class="text-rub">+2 Р</p>
+            </div>
+
+            <p class="col-lg-6 col-md-5 subscription-text-switch">Возврат в приложение помогает повысить позицию в поисковой выдаче.</p>
+          </div>
+
+          <div class="row line-row">
+
+          </div>
+
+          <div class="row" id="package-row1">
+            <div class="col-lg-6 col-md-7" id="border">Количество установок от 100
+              <div class="row">
+                <input  ng-model="installsCountET" id="package-input" type="number" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="Например 500" ng-change='calculate()'></input>
+              </div>
+
+            </div>
+            <p class="col-lg-6 col-md-5 subscription-text">Какое общее количество установок вы хотите?</p>
+          </div>
+
+          <div class="row line-row">
+
+          </div>
+
+          <div class="row" id="package-row-switch">
+            <div class="col-lg-6 col-md-7 vertical-align">
+
+              <label class="switch" >
+                <input type="checkbox" ng-model="reviewSwitch" ng-change='rewiewSwitchClicked()'>
+                <div class="slider round"></div>
+              </label>
+
+              <p class="text-pre-subscr">С отзывом</p>
+              <p class="text-rub">+2 Р</p>
+            </div>
+
+            <p class="col-lg-6 col-md-5 subscription-text-switch">- вместе 5 звездами</p>
+          </div>
+
+
+          <div class="row invisible-row" id="package-row-5" ng-style="rewiewSwitchStyle">
+            <div class="col-lg-6 col-md-7" id="border">Ключевоe слово для отзыва
+              <div class="row">
+                <input ng-model="reviewWordET" id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="Например, лайки">
+              </div>
+
+            </div>
+            <p class="col-lg-6 col-md-5 subscription-text">Если вы хотите продвинуться по ключевому слову, но в поиске не выдаетесь по нему. То ключевое слово в отзыве, то что вам нужно.</p>
+          </div>
+
+
+          <div class="row invisible-row" id="package-top" ng-style="rewiewSwitchStyle">
+            <div class="col-lg-6 col-md-7" id="border">Важное пожелание
+              <div class="row">
+                <input ng-model="wishET" id="package-input" type="text" name="inputText" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" placeholder="Например, писать по-русски">
+              </div>
+
+            </div>
+            <p class="col-lg-6 col-md-5 subscription-text">Можете написать, что вам достаточно только оценки или чтобы отзыв был не короче 100 символов.</p>
+          </div>
+          <div class="row line-row">
+
+          </div>
+
+          <div class="row" id="package-row-switch">
+            <div class="col-lg-6 col-md-7 vertical-align">
+
+              <label class="switch" >
+                <input type="checkbox" ng-model="upGoodReviewsSwitch" ng-change='calculate()'>
+                <div class="slider round"></div>
+              </label>
+
+              <p class="text-pre-subscr">Поднять хорошие отзывы</p>
+              <p class="text-rub">+2 Р</p>
+            </div>
+
+            <p class="col-lg-6 col-md-5 subscription-text-switch">Исполнители будут лайкать положительные  отзывы, благодаря чему они станут заметнее.</p>
+          </div>
+
+          <div class="row line-row">
+
+          </div>
+
+          <div class="row" id="package-row-switch">
+            <div class="col-lg-6 col-md-7 vertical-align">
+
+              <label class="switch" >
+                <input type="checkbox" ng-model="toFewDaysSwitch" ng-change='toFewDaysSwitchClicked()'>
+                <div class="slider round"></div>
+              </label>
+
+              <p class="text-pre-subscr">Распределить на несколько дней</p>
+            </div>
+
+            <p class="col-lg-6 col-md-5 subscription-text-switch">Бюджет будет равномерно распределен</p>
+          </div>
+
+          <div class="row invisible-row" id="package-row-5" ng-style="toFewDaysSwitchStyle">
+            <div class="col-lg-4 col-md-4" id="border">Количество дней
+              <div class="row">
+                <input ng-model="countDaysET" id="package-input" type="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" name="inputText" placeholder="Например, 3">
+
+              </div>
+
+
+
+            </div>
+            <div class="col-lg-2 col-md-3 vertical-align">
+              <a href="" ng-click="minusClicked()">
+                <img  class="icon-minus" src="icons/minus_icon.png">
+              </a>
+              <a href="" ng-click="plusClicked()" >
+                <img class="icon-plus" src="icons/plus_icon.png">
+              </a>
+            </div>
+
+            <p class="col-lg-6 col-md-5 subscription-text">Выберите удобное для вас количество дней.</p>
+          </div>
+
+          <div class="row vertical-align" id="package-row1">
+            <button ng-click="createTask()" id="start-campaign-btn" type="button" class="btn btn-primary btn-md">Отправить на модерацию</button>
+            <p class="text-cost-left">Стоимость заказа</p>
+            <p class="text-cost-right">{{count_money}} Р</p>
+
+
+
+          </div>
+
+
+
+
+        </section>
+      </div>
+
+    </div>
+    <script src="scripts/menuAnimation.js" type="text/javascript"></script>
+
+  </body>
+  </html>

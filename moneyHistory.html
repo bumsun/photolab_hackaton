@@ -1,0 +1,93 @@
+<script src="scripts/menuAnimation.js"></script>
+
+<my-navbar></my-navbar>
+<my-menu></my-menu>
+
+  <!-- <script src="scripts/statistics.js"></script> -->
+  <div class="content" ng-controller="myHistoryController">
+    <div class="top-bar">
+          <a href="#menu" class="side-menu-link burger">
+            <span class='burger_inside' id='bgrOne'></span>
+            <span class='burger_inside' id='bgrTwo'></span>
+            <span class='burger_inside' id='bgrThree'></span>
+          </a>
+        </div>
+      <section class="content-inner" id="cabinet-center">
+        <div class="container-fluid" id="center-container">
+
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+            <p class="my-orders-text">Статистика</p>
+          </div>
+          <div class="row" id="package-top">
+
+          </div>
+          <div class="row vertical-align" id="package-top">
+            <div class="col-lg-3 col-md-3 col-sm-12" style="min-width : 260px">
+
+              <div class="btn-group">
+                <button type="button" class="btn btn-default"  style="margin-left : -15px">{{selectBTN == undefined ? "Выберите приложение" : selectBTN | limitTo:19}}</button>
+                <button type="button" ng-click="showApps()" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                <ul class="dropdown-menu" ng-style="appsListStyle" style="visibility:hidden">
+
+                  <li ng-repeat='app in apps' ng-click="getAppName(app.bundle, app.name, app.type_os)"><a href="">
+                    <img src="{{app.type_os == 'android' ? 'icons/android.png' : 'icons/apple.png'}}"
+                    class="img-device-icon"></img>
+                    <img src="{{app.type_os == 'android' ? 'icons/android.png' : 'icons/apple.png'}}"
+                    class="img-device-icon hovered"></img>
+                    {{app.name}} ({{app.bundle}})
+                  </a></li>
+
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 vertical-align">
+              <p class="menu-text" id="text-black">Тип компании: </p>
+
+              <div class="btn-group">
+                <a type="button" href="#" data-toggle="dropdown" class="dropdown-toggle">{{type}}</a>
+                <ul class="dropdown-menu">
+
+                  <li><a ng-model="searchRequest" ng-click="searchRequestClicked()" href="#">Поисковый запрос</a></li>
+                  <li><a ng-model="reviews" ng-click="reviewsClicked()" href="#">Отзывы</a></li>
+
+                </ul>
+
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-3 col-md-3 col-sm-12 vertical-align">
+              <p class="menu-text" id="text-black">Период:</p>
+              <input date-range-picker class="form-control date-picker" type="text" ng-model="date" ng-change="dateChanged()"/>
+            </div>
+
+
+          </div>
+          <div style="margin-top : 20px; margin-left : 30px" class="row">
+            <p >{{moneySpent}}</p>
+          </div>
+          <div class="row" id="graphic-row" ng-style="graphicStyleHistory">
+            <!-- chart-colors="colors" -->
+            <div class="col-md-12">
+              <canvas id="line" class="chart chart-line" chart-data="dataHistory"
+              chart-labels="labelsHistory" chart-series="seriesHistory" chart-options="options"
+              chart-dataset-override="datasetOverride" chart-click="onClick">
+            </canvas>
+            </div>
+
+          </div>
+          <div class="row icon-placeholder-bank" style="visibility : collapse; display : none; margin-top : 130px" ng-style="noStatsStyle">
+            <img class="center" src="icons/icon_empty_stat.png" align="center">
+          </div>
+          <div class="row stats-template center" ng-style="noStatsStyle"  style="visibility : collapse; display : none">
+               <p class="center" ng-model="statsTV">{{statTextTV}}</p>
+          </div>
+
+
+        </div>
+
+      </section>
+    </div>
