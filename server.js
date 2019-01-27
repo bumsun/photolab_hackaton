@@ -111,7 +111,7 @@ function findDifference(req, res) {
   process.stdout.on('data', function(data) {
       console.log("findFace 8");
       console.log(data.toString());
-      res.send(data.toString());
+      res.send(JSON.parse(data.toString()));
   });
   process.stderr.on('data', (data) => {
       console.log(data.toString());

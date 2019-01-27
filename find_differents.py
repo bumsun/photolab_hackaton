@@ -51,16 +51,16 @@ for c in cnts:
 	# bounding box on both input images to represent where the two
 	# images differ
 	(x, y, w, h) = cv2.boundingRect(c)
-	if w > 3 and h > 3:
+	if w > 10 and h > 10:
 		if "{" in result:
 			 result = result + ","
 		result = result + '{"x":%d,' % (x)
 		result = result + '"y":%d,' % (y)
-		result = result + '"w":"%d,' % (w)
+		result = result + '"w":%d,' % (w)
 		result = result + '"h":%d}' % (h)
 		cv2.rectangle(imageB, (x, y), (x + w, y + h), (0, 0, 255), 2)
 result = result + "]"
-cv2.imwrite("differents.jpg", cv2.cvtColor(imageB, cv2.COLOR_RGB2BGR))
+cv2.imwrite("views/differents.jpg", cv2.cvtColor(imageB, cv2.COLOR_RGB2BGR))
 print(result)
 
 
