@@ -1,8 +1,8 @@
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
 
     $routeProvider
-    .when("/main", {
-        templateUrl : "photos.html",
+    .when("/", {
+        templateUrl : "main.html",
     });
     $locationProvider.html5Mode(true);
 });

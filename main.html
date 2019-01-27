@@ -9,10 +9,11 @@
 
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://rawgit.com/Foliotek/Croppie/master/croppie.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/main.css"></link>
-
+<link rel="stylesheet" href="css/dot-loader.css"></link>
 
   <script src="libraries/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
@@ -21,6 +22,9 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+  <script type="text/javascript" src="https://rawgit.com/Foliotek/Croppie/master/croppie.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/lpsBetty/angular-croppie/master/angular-croppie.js"></script>
   <script src="libraries/ngclipboard.min.js"></script>
   <script src="libraries/native-toast.min.js"></script>
 
@@ -29,7 +33,88 @@
 </head>
 <body ng-app="siteModule" >
   <div style="height : 100%" ng-controller="mainController">
-    <div style="height : 100%" ng-view></div>
+    <div class="row" style="background-image: url('icon/back.jpg'); height : 100%">
+
+      <div class="col-md-6 col-md-offset-3">
+        <div class="row">
+          <img style="margin-top: 30px;
+        margin-left: -35px;" src="icon/logo.png" alt="">
+        </div>
+
+        <div class="panel-login" style="width: 800px;height : 580px;padding: 30px; margin-top : 30px;margin-left : -50px;">
+          <div ng-style="regularStyle">
+            <div class="row vertical-align">
+              <p class="title-find-5">Найди 5 отличий</p>
+              <div ng-click="reloadPhoto()" class="vertical-align" style="margin-left : 278px">
+                <a class="vertical-align" href="">
+                  <img style="height : 15px;" src="/icon/refresh.png" alt="">
+                    <p class="title-generate-new">СГЕНЕРИРОВАТЬ ДРУГОЙ ВАРИАНТ</p>
+                </a>
+              </div>
+
+            </div>
+            <div class="row vertical-align" style="margin-top : 20px;">
+
+               <img src="{{realUrl}}" style="margin-left : 30px; margin-right : 30px; width : 340px; height : 340px;" ng-src="{{cropped.image}}" alt="">
+
+               </img>
+
+                 <img  id="fakeImage"src="{{fakeUrl}}" style="width : 340px; height : 340px;" alt="" ng-src="{{fakeUrl}}">
+                   <div ng-style="loadingPhoto"class="row vertical-align" style="margin-left : -210px;visibility : collapse; display : none">
+                     <div class="dot-loader"></div>
+                      <div class="dot-loader"></div>
+                      <div class="dot-loader"></div>
+
+                   </div>
+                 </img>
+                 <canvas style="width : 340px; height : 340px;margin-left : 400px;"id="gameCanvas" width="340" height="340">
+                 </canvas>
+
+
+            </div>
+            <div class="row vertical-align">
+              <p style="margin-left : 30px" class="description-title">Исходная фотография</p>
+              <p style="margin-left: 255px; width : 180px;" class="description-title">Нажимай на найденные отличия</p>
+              <p ng-click="showAllDifferences()" style="margin-left: 98px;color: #25b4f2;
+              font-size: 11px;
+              margin-top: 10px;">Я СДАЮСЬ!</p>
+            </div>
+            <div class="row vertical-align">
+                <p class="description-title-2">Ломали голову над этой загадкой : 20</p>
+                <img style="height : 13px;margin-left : 6px; margin-top : 8px;" src="/icon/person.png" alt="">
+            </div>
+          </div>
+
+
+          <div ng-style="cropperPickStyle" style="visibility : collapse; display : none">
+            <croppie  style="height : 500px;width:800px;"ng-if="cropped.source" src="cropped.source" ng-model="cropped.image" options="{boundary:{width:480,height:480},viewport:{width:340,height:340},showZoomer: false}"></croppie>
+            <p class="description-title"style="margin-left: 670px;
+    font-size: 16px;font-family: OpenSans-Semibold;" ng-click="sendToServer()">Готово</p>
+          </div>
+
+
+        </div>
+
+
+        <div class="panel-login" style="width : 800px; height : 110px; margin-left : -50px; margin-top : 20px; padding-top : 20px;">
+          <p style="margin-left : 40px; " class="title-find-5">Сделай головоломку из своей фотографии</p>
+          <p style="margin-left : 40px;" class="description-title">На загруженной фотографии должно быть изображено лицо</p>
+          <!-- <button accept="image/*" ng-click="addPhoto()" id="start-campaign-btn-menu" type="file">ЗАГРУЗИТЬ СВОЕ ФОТО
+          </button> -->
+          <div id="start-campaign-btn-menu">ЗАГРУЗИТЬ СВОЕ ФОТО
+    <input id="upload" accept="image/*" type="file" style="top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: -25px;
+    height: 100%;
+    opacity: 0;"></input>
+  </div>
+
+        </div>
+      </div>
+
+
+    </div>
 
   </div>
 
